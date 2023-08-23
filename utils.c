@@ -1,7 +1,7 @@
 #include "main.h "
 /**
 * append_hexa_code - Append ascci in hexadecimal
-* @buffer: Array 
+* @buffer: Array
 * @i: Index at which to start appending.
 * @ascii_code: ASCCI CODE.
 * Return: Always 3 and nothing
