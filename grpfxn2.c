@@ -13,15 +13,15 @@
 int print_unsigned(va_list format, char buffer[],
     int flags, int width, int precision, int size)
 {
-    int i = BUFF_SIZE - 2;
+    int i = BUFFERSIZE - 2;
     unsigned long int num = va_arg(format, unsigned long int);
 
-    num = convert_size_unsigned(num, size);
+    num = convert_size_unsgnd(num, size);
 
     if (num == 0)
         buffer[i--] = '0';
 
-    buffer[BUFF_SIZE - 1] = '\0';
+    buffer[BUFFERSIZE - 1] = '\0';
 
     while (num > 0)
     {
@@ -31,7 +31,7 @@ int print_unsigned(va_list format, char buffer[],
 
     i++;
 
-    return (write_unsigned(0, i, buffer, flags, width, precision, size));
+    return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
 
 /**
@@ -47,18 +47,18 @@ int print_unsigned(va_list format, char buffer[],
 int print_octal(va_list format, char buffer[],
     int flags, int width, int precision, int size)
 {
-    int i = BUFF_SIZE - 2;
+    int i = BUFFERSIZE - 2;
     unsigned long int num = va_arg(format, unsigned long int);
     unsigned long int init_num = num;
 
     UNUSED(width);
 
-    num = convert_size_unsigned(num, size);
+    num = convert_size_unsgnd(num, size);
 
     if (num == 0)
         buffer[i--] = '0';
 
-    buffer[BUFF_SIZE - 1] = '\0';
+    buffer[BUFFERSIZE - 1] = '\0';
 
     while (num > 0)
     {
@@ -66,12 +66,12 @@ int print_octal(va_list format, char buffer[],
         num /= 8;
     }
 
-    if (flags & F_HASH && init_num != 0)
+    if (flags & HASH && init_num != 0)
         buffer[i--] = '0';
 
     i++;
 
-    return (write_unsigned(0, i, buffer, flags, width, precision, size));
+    return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
 
 /**
@@ -123,18 +123,18 @@ int print_hexa_upper(va_list format, char buffer[],
 int print_hexa(va_list format, char map_to[], char buffer[],
     int flags, char flag_ch, int width, int precision, int size)
 {
-    int i = BUFF_SIZE - 2;
+    int i = BUFFERSIZE - 2;
     unsigned long int num = va_arg(format, unsigned long int);
     unsigned long int init_num = num;
 
     UNUSED(width);
 
-    num = convert_size_unsigned(num, size);
+    num = convert_size_unsgnd(num, size);
 
     if (num == 0)
         buffer[i--] = '0';
 
-    buffer[BUFF_SIZE - 1] = '\0';
+    buffer[BUFFERSIZE - 1] = '\0';
 
     while (num > 0)
     {
@@ -142,7 +142,7 @@ int print_hexa(va_list format, char map_to[], char buffer[],
         num /= 16;
     }
 
-    if (flags & F_HASH && init_num != 0)
+    if (flags & HASH && init_num != 0)
     {
         buffer[i--] = flag_ch;
         buffer[i--] = '0';
@@ -150,6 +150,5 @@ int print_hexa(va_list format, char map_to[], char buffer[],
 
     i++;
 
-    return (write_unsigned(0, i, buffer, flags, width, precision, size));
+    return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
-

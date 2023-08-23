@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdeff.h>
 #include <stdio.h>
 #include <stdarg.h>
 /**
@@ -40,14 +39,14 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 			unknown_len += write(1, " ", 1);
 		}
 		else if (width)
+		{
 			--(*ind);
 			while (fmt[*ind] != ' ' && fmt[*ind] != '%')
 				--(*ind);
 			if (fmt[*ind] == ' ')
-			{
 				--(*ind);
-			}
 			return (1);
+		}
 		unknown_len += write(1, &fmt[*ind], 1);
 		return (unknown_len);
 	}

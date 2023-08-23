@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include <stdeff.h>
 void print_inbuffer(char buffer[], int *buffindex);
 /**
 * print_inbuffer - print what is in buffer
@@ -58,7 +57,7 @@ int _printf(const char *format, ...)
 			precision = find_precision(format, &i, listname);
 			size = find_size(format, &i);
 			++i;
-			printed = handle_print(format, &i, list, buffer,
+			printed = handle_print(format, &i, listname, buffer,
 				flags, width, precision, size);
 			if (printed == -1)
 			{
