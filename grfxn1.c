@@ -10,7 +10,8 @@
 * @size: Size specifier
 * Return: Number of chars printed.
 */
-int print_pointer(va_list format, char buffer[],int flags, int width, int precision, int size)
+int print_pointer(va_list format, char buffer[], int flags,
+		int width, int precision, int size)
 {
 	char extra_c = 0, padd = ' ';
 	int ind = BUFFERSIZE - 2, length = 2, padd_start = 1;
@@ -45,7 +46,8 @@ int print_pointer(va_list format, char buffer[],int flags, int width, int precis
 
 	ind++;
 
-	return (write_pointer(buffer, ind, length, width, flags, padd, extra_c, padd_start));
+	return (write_pointer(buffer, ind, length, width,
+				flags, padd, extra_c, padd_start));
 }
 /**
 * print_non_printable - Prints ascii codes in hexa of non printable chars
@@ -57,7 +59,8 @@ int print_pointer(va_list format, char buffer[],int flags, int width, int precis
 * @size: Size specifier
 * Return: Number of chars printed
 */
-int print_non_printable(va_list format, char buffer[], int flags, int width, int precision, int size)
+int print_non_printable(va_list format, char buffer[],
+		int flags, int width, int precision, int size)
 {
 	int i = 0, offset = 0;
 	char *str = va_arg(format, char *);
@@ -91,7 +94,8 @@ int print_non_printable(va_list format, char buffer[], int flags, int width, int
 * @size: Size specifier
 * Return: Numbers of chars printed
 */
-int print_reverse(va_list format, char buffer[], int flags, int width, int precision, int size)
+int print_reverse(va_list format, char buffer[], int flags,
+		int width, int precision, int size)
 {
 	char *str;
 	int i, count = 0;
@@ -112,6 +116,7 @@ int print_reverse(va_list format, char buffer[], int flags, int width, int preci
 	for (i = i - 1; i >= 0; i--)
 	{
 		char z = str[i];
+
 		write(1, &z, 1);
 		count++;
 	}
@@ -127,7 +132,8 @@ int print_reverse(va_list format, char buffer[], int flags, int width, int preci
 * @size: Size specifier
 * Return: Numbers of chars printed
 */
-int print_rot13string(va_list format, char buffer[], int flags, int width, int precision, int size)
+int print_rot13string(va_list format, char buffer[],
+		int flags, int width, int precision, int size)
 {
 	char x;
 	char *str;
